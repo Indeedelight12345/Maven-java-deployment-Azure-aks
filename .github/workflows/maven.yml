@@ -30,9 +30,11 @@ jobs:
           cache: maven
 
       - name: Build Maven project
+        working-directory: ./MavenApp
         run: mvn clean package
 
       - name: Run Maven tests
+        working-directory: ./MavenApp
         run: mvn test
 
   sonarcloud:
@@ -47,14 +49,15 @@ jobs:
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v2.1.0
         with:
-          projectBaseDir: ./Mavenapp
+          projectBaseDir: ./MavenApp
           organization: indeedelight12345
           projectKey: Indeedelight12345_Maven-java-deployment-Azure-aks
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: Upload Maven artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v3working-directory: ./MavenApp
+        working-directory:  ./MavenApp
         with:
           name: maven-jar
           path: target/*.jar
@@ -73,7 +76,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Build Docker image
-        run: docker build -t ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} ./Mavenapp
+        run: docker build -t ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} ./MavenApp
 
       - name: Trivy scan Docker image
         uses: aquasecurity/trivy-action@v0.28.0
