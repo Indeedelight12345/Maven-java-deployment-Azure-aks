@@ -16,6 +16,9 @@ jobs:
 
   maven_build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./MavenApp
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -30,16 +33,17 @@ jobs:
           cache: maven
 
       - name: Build Maven project
-        working-directory: ./MavenApp
         run: mvn clean package
 
       - name: Run Maven tests
-        working-directory: ./MavenApp
         run: mvn test
 
   sonarcloud:
     runs-on: ubuntu-latest
-    needs: maven_build 
+    needs: maven_build
+    defaults:
+      run:
+        working-directory: ./MavenApp
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -49,22 +53,21 @@ jobs:
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v2.1.0
         with:
-          projectBaseDir: ./MavenApp
+          projectBaseDir: .
           organization: indeedelight12345
           projectKey: Indeedelight12345_Maven-java-deployment-Azure-aks
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: Upload Maven artifact
-        uses: actions/upload-artifact@v3working-directory
-        working-directory:  ./MavenApp
+        uses: actions/upload-artifact@v3
         with:
           name: maven-jar
           path: target/*.jar
 
   docker-build-and-scan:
     runs-on: ubuntu-latest
-    needs: [sonarcloud , maven_build]
+    needs: sonarcloud
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
