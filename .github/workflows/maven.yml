@@ -60,7 +60,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: Upload Maven artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: maven-jar
           path: target/*.jar
@@ -126,7 +126,7 @@ jobs:
         run: docker save ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} -o ${{ env.IMAGE_NAME }}.tar
 
       - name: Upload Docker image artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: docker-image
           path: ${{ env.IMAGE_NAME }}.tar
