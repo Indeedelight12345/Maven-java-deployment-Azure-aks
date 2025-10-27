@@ -51,7 +51,7 @@
                 </configuration>
             </plugin>
 
-           
+            <!-- Spring Boot Maven Plugin -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -64,6 +64,21 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!-- Sonar Maven Plugin -->
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.10.0.2594</version>
+            </plugin>
         </plugins>
     </build>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>sonarsource</id>
+            <name>SonarSource Repository</name>
+            <url>https://repox.sonarsource.com/maven</url>
+        </pluginRepository>
+    </pluginRepositories>
 </project>
