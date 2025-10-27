@@ -55,7 +55,8 @@ jobs:
         with:
           projectBaseDir: ./MavenApp
         env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN}}
+          SONAR_HOST_URL: https://sonarcloud.io 
 
        
 
