@@ -104,9 +104,9 @@ jobs:
         run: docker build -t ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} ./MavenApp
 
       - name: Trivy scan Docker image
-        uses: aquasecurity/trivy-action@v0.31.0
+        uses: aquasecurity/trivy-action@v0.30.0
         with:
-          image-ref: ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+          image-ref: ${{env.IMAGE_NAME }}:${{ env.IMAGE_TAG}}
           format: table
           exit-code: 1
           ignore-unfixed: true
