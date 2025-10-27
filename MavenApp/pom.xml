@@ -13,7 +13,8 @@
 
     <properties>
         <java.version>17</java.version>
-        <spring.boot.version>3.3.4</spring.boot.version>
+        <spring.boot.version>3.3.11
+        </spring.boot.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <sonar.organization>indeedelight12345</sonar.organization>
