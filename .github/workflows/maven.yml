@@ -58,6 +58,8 @@ jobs:
           projectKey: Indeedelight12345_Maven-java-deployment-Azure-aks
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        working-directory: ./MavenApp
+
 
       - name: Upload Maven artifact
         uses: actions/upload-artifact@v4
