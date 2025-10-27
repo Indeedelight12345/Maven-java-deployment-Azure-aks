@@ -80,9 +80,7 @@ jobs:
               -Dsonar.host.url=https://sonarcloud.io \
               -Dsonar.token=${{ secrets.SONAR_TOKEN }}
 
-       
-
-
+      
       - name: Upload Maven artifact
         uses: actions/upload-artifact@v4
         with:
@@ -106,7 +104,7 @@ jobs:
         run: docker build -t ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} ./MavenApp
 
       - name: Trivy scan Docker image
-        uses: aquasecurity/trivy-action@v0.28.0
+        uses: aquasecurity/trivy-action@v0.33.1
         with:
           image-ref: ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
           format: table
