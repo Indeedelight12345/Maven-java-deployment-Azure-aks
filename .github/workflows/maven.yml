@@ -51,6 +51,8 @@ jobs:
           fetch-depth: 0
 
       - name: SonarCloud Scan
+        working-directory: ./MavenApp
+        
         uses: SonarSource/sonarcloud-github-action@v2.1.0
         with:
           projectBaseDir: .
@@ -58,7 +60,7 @@ jobs:
           projectKey: Indeedelight12345_Maven-java-deployment-Azure-aks
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        working-directory: ./MavenApp
+       
 
 
       - name: Upload Maven artifact
