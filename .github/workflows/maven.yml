@@ -1,4 +1,5 @@
-name: Java CI with Maven, SonarCloud & Docker Push
+
+name: Java CI with Maven, SonarCloud & Docker Push to openshift  dev 
 
 on:
   push:
