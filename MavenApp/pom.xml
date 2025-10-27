@@ -16,6 +16,7 @@
         <spring.boot.version>3.3.4</spring.boot.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
+        <sonar.organization>indeedelight12345</sonar.organization>
     </properties>
 
     <dependencies>
@@ -36,7 +37,6 @@
     </dependencies>
 
     <build>
-        <!-- Always produce app.jar -->
         <finalName>app</finalName>
 
         <plugins>
@@ -73,12 +73,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <!-- <pluginRepositories>
-        <pluginRepository>
-            <id>sonarsource</id>
-            <name>SonarSource Repository</name>
-            <url>https://repox.sonarsource.com/maven</url>
-        </pluginRepository>
-    </pluginRepositories> -->
 </project>
