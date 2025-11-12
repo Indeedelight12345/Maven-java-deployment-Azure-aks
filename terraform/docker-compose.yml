@@ -1,0 +1,9 @@
+services:
+  myindexapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "80:80"
+    container_name: myindexapp
